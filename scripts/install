@@ -21,6 +21,7 @@ ynh_abort_if_errors
 #=================================================
 
 app=$YNH_APP_INSTANCE_NAME
+arch=$YNH_ARCH
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
