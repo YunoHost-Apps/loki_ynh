@@ -1,5 +1,5 @@
 {
-    "name": "Loki + Promtail",
+    "name": "Loki",
     "id": "loki",
     "packaging_format": 1,
     "description": {
@@ -22,7 +22,7 @@
     "requirements": {
         "yunohost": ">= 11.0.0"
     },
-    "multi_instance": true,
+    "multi_instance": false,
     "services": [],
     "arguments": {
         "install": []
