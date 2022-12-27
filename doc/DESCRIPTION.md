@@ -1,9 +1,14 @@
-Some long and extensive description of what the app is and does, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus. It is designed to be very cost effective and easy to operate. It does not index the contents of the logs, but rather a set of labels for each log stream.
 
-### Features
+Compared to other log aggregation systems, Loki:
 
-- Ut enim ad minim veniam, quis nostrud exercitation ullamco ;
-- Laboris nisi ut aliquip ex ea commodo consequat ;
-- Duis aute irure dolor in reprehenderit in voluptate ;
-- Velit esse cillum dolore eu fugiat nulla pariatur ;
-- Excepteur sint occaecat cupidatat non proident, sunt in culpa."
+ - does not do full text indexing on logs. By storing compressed, unstructured logs and only indexing metadata, Loki is simpler to operate and cheaper to run.
+ - indexes and groups log streams using the same labels you’re already using with Prometheus, enabling you to seamlessly switch between metrics and logs using the same labels that you’re already using with Prometheus.
+ - is an especially good fit for storing Kubernetes Pod logs. Metadata such as Pod labels is automatically scraped and indexed.
+ - has native support in Grafana (needs Grafana v6.0).
+
+A Loki-based logging stack consists of 3 components:
+ - [promtail](/Yunohost-Apps/promtail_ynh) is the agent, responsible for gathering logs and sending them to Loki.
+ - [loki](/Yunohost-Apps/loki_ynh) is the main server, responsible for storing logs and processing queries.
+ - [Grafana](/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
+
