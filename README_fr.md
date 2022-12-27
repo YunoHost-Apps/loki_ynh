@@ -25,9 +25,9 @@ Compared to other log aggregation systems, Loki:
  - has native support in Grafana (needs Grafana v6.0).
 
 A Loki-based logging stack consists of 3 components:
- - [promtail](/Yunohost-Apps/promtail_ynh) is the agent, responsible for gathering logs and sending them to Loki.
- - [loki](/Yunohost-Apps/loki_ynh) is the main server, responsible for storing logs and processing queries.
- - [Grafana](/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
+ - [promtail](https://github.com/Yunohost-Apps/promtail_ynh) is the agent, responsible for gathering logs and sending them to Loki.
+ - [loki](https://github.com/Yunohost-Apps/loki_ynh) is the main server, responsible for storing logs and processing queries.
+ - [Grafana](https://github.com/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
 
 
 
