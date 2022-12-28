@@ -67,7 +67,8 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path" --source_id="$YNH_ARCH"
+	ynh_setup_source --dest_dir="$final_path" --source_id="loki-$YNH_ARCH"
+	ynh_setup_source --dest_dir="$final_path" --source_id="promtail-$YNH_ARCH"
 fi
 
 chmod 750 "$final_path"
