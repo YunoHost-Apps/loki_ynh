@@ -64,11 +64,17 @@ echo "Handling asset at $asset_url"
 # Here we base the source file name upon a unique keyword in the assets url (admin vs. update)
 # Leave $src empty to ignore the asset
 case $asset_url in
+  *"promtail-linux-amd64.zip")
+    src="promtail-amd64"
+    ;;
+  *"promtail-linux-arm64.zip")
+    src="promtail-arm64"
+    ;;
   *"loki-linux-amd64.zip")
-    src="amd64"
+    src="loki-amd64"
     ;;
   *"loki-linux-arm64.zip")
-    src="arm64"
+    src="loki-arm64"
     ;;
   *)
     src=""

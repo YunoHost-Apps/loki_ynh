@@ -1,5 +1,5 @@
 {
-    "name": "Loki",
+    "name": "Loki + Promtail",
     "id": "loki",
     "packaging_format": 1,
     "description": {
