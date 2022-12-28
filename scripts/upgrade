@@ -141,7 +141,7 @@ ynh_use_logrotate --non-append
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
 yunohost service add $app --description="Loki daemon" --log="/var/log/$app/loki.log"
-yunohost service add $app --description="Promtail daemon" --log="/var/log/$app/promtail.log"
+yunohost service add $app-promtail --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
 #=================================================
 # START SYSTEMD SERVICE
