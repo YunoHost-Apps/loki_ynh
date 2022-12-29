@@ -75,6 +75,14 @@ chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
+mkdir -p "/etc/$app/loki.d"
+chmod 700 "/etc/$app/loki.d"
+chown $app:www-data "/etc/$app/loki.d"
+
+mkdir -p "/etc/$app/promtail.d"
+chmod 700 "/etc/$app/promtail.d"
+chown $app:www-data "/etc/$app/promtail.d"
+
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
@@ -95,14 +103,6 @@ ynh_add_config --template="promtail-default.yaml" --destination="/etc/$app/promt
 # for example if the app is expected to be able to modify its own config
 chmod 400 "/etc/$app/promtail-default.yaml"
 chown $app:www-data "/etc/$app/promtail-default.yaml"
-
-mkdir -p "/etc/$app/loki.d"
-chmod 700 "/etc/$app/loki.d"
-chown $app:www-data "/etc/$app/loki.d"
-
-mkdir -p "/etc/$app/promtail.d"
-chmod 700 "/etc/$app/promtail.d"
-chown $app:www-data "/etc/$app/promtail.d"
 
 #=================================================
 # SETUP SYSTEMD

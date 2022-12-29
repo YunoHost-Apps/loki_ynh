@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__/
-ExecStart=/bin/bash -c '__FINALPATH__/loki-linux-__ARCH__ --config.file <(/bin/bash __FINALPATH__/merge_yaml.bash /etc/__APP__/loki-default.yaml /etc/__APP__/loki.d/*.y{a,}ml)'
+ExecStart=/bin/bash -c '__FINALPATH__/loki-linux-__ARCH__ --config.file <(/bin/bash __FINALPATH__/merge_yaml.sh /etc/__APP__/loki-default.yaml /etc/__APP__/loki.d/*.y{a,}ml)'
 StandardOutput=append:/var/log/__APP__/loki.log
 StandardError=inherit
 
