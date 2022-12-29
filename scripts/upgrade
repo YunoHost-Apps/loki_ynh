@@ -20,6 +20,7 @@ arch=$YNH_ARCH
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 http_port=$(ynh_app_setting_get --app=$app --key=http_port)
 grpc_port=$(ynh_app_setting_get --app=$app --key=grpc_port)
+promtail_port=$(ynh_app_setting_get --app=$app --key=promtail_port)
 
 #=================================================
 # CHECK VERSION
