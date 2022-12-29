@@ -44,6 +44,9 @@ ynh_app_setting_set --app=$app --key=http_port --value=$http_port
 grpc_port=$(ynh_find_port --port=9096)
 ynh_app_setting_set --app=$app --key=grpc_port --value=$grpc_port
 
+promtail_port=$(ynh_find_port --port=9080)
+ynh_app_setting_set --app=$app --key=promtail_port --value=$promtail_port
+
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
@@ -65,32 +68,49 @@ ynh_system_user_create --username=$app --home_dir="$final_path"
 ynh_script_progression --message="Setting up source files..." --weight=1
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-ynh_setup_source --dest_dir="$final_path" --source_id="$YNH_ARCH"
+ynh_setup_source --dest_dir="$final_path" --source_id="loki-$YNH_ARCH"
+ynh_setup_source --dest_dir="$final_path" --source_id="promtail-$YNH_ARCH"
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
+
+mkdir -p "/etc/$app/loki.d"
+chmod 700 "/etc/$app/loki.d"
+chown $app:www-data "/etc/$app/loki.d"
+
+mkdir -p "/etc/$app/promtail.d"
+chmod 700 "/etc/$app/promtail.d"
+chown $app:www-data "/etc/$app/promtail.d"
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template="local-config.yaml" --destination="$final_path/local-config.yaml"
+ynh_add_config --template="loki-default.yaml" --destination="/etc/$app/loki-default.yaml"
 
 # FIXME: this should be handled by the core in the future
 # You may need to use chmod 600 instead of 400,
 # for example if the app is expected to be able to modify its own config
-chmod 400 "$final_path/local-config.yaml"
-chown $app:www-data "$final_path/local-config.yaml"
+chmod 400 "/etc/$app/loki-default.yaml"
+chown $app:www-data "/etc/$app/loki-default.yaml"
+
+ynh_add_config --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
+
+# FIXME: this should be handled by the core in the future
+# You may need to use chmod 600 instead of 400,
+# for example if the app is expected to be able to modify its own config
+chmod 400 "/etc/$app/promtail-default.yaml"
+chown $app:www-data "/etc/$app/promtail-default.yaml"
 
 #=================================================
 # SETUP SYSTEMD
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=1
 
-# Faire 2 applications différentes
-ynh_add_systemd_config
+ynh_add_systemd_config --template="loki.service"
+ynh_add_systemd_config --template="promtail.service" --service="$app-promtail"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -107,7 +127,8 @@ ynh_use_logrotate
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="Loki daemon" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Loki daemon" --log="/var/log/$app/loki.log"
+yunohost service add $app-promtail --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -115,7 +136,8 @@ yunohost service add $app --description="Loki daemon" --log="/var/log/$app/$app.
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/loki.log"
+ynh_systemd_action --service_name=$app-promtail --action="start" --log_path="/var/log/$app/promtail.log"
 
 #=================================================
 # END OF SCRIPT
