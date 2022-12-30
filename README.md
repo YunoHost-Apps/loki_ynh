@@ -35,7 +35,7 @@ A Loki-based logging stack consists of 3 components:
 ## Disclaimers / important information
 
  - Loki is not exposed to the web;
- - The configuration file is overwritten across updates;
+ - If you want to add pieces of configuration or overwrite the configuration, add a new file in `/etc/loki/loki.d/` for Loki or in `/etc/loki/promtail.d/` for promtail
 
 ## Documentation and resources
 
