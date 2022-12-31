@@ -1,12 +1,12 @@
 {
-    "name": "Loki",
+    "name": "Loki + Promtail",
     "id": "loki",
     "packaging_format": 1,
     "description": {
         "en": "Grafana Loki is a set of components that can be composed into a fully featured logging stack.",
         "fr": "Grafana Loki est un ensemble de composants qui peuvent être composés pour former une pile de journalisation complète."
     },
-    "version": "2.7.1~ynh1",
+    "version": "2.7.1~ynh2",
     "url": "https://grafana.com/docs/loki/latest/",
     "upstream": {
         "license": "AGPL-3.0",

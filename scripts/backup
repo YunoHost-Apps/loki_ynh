@@ -44,6 +44,12 @@ ynh_backup --src_path="$final_path"
 #=================================================
 # SPECIFIC BACKUP
 #=================================================
+# BACKUP CONFIGURATION
+#=================================================
+
+ynh_backup --src_path="/etc/$app"
+
+#=================================================
 # BACKUP LOGROTATE
 #=================================================
 
@@ -54,6 +60,7 @@ ynh_backup --src_path="/etc/logrotate.d/$app"
 #=================================================
 
 ynh_backup --src_path="/etc/systemd/system/$app.service"
+ynh_backup --src_path="/etc/systemd/system/$app-promtail.service"
 
 #=================================================
 # END OF SCRIPT

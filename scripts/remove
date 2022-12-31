@@ -32,6 +32,7 @@ if ynh_exec_warn_less yunohost service status $app >/dev/null
 then
 	ynh_script_progression --message="Removing $app service integration..." --weight=1
 	yunohost service remove $app
+	yunohost service remove $app-promtail
 fi
 
 #=================================================
@@ -41,6 +42,7 @@ ynh_script_progression --message="Stopping and removing the systemd service..." 
 
 # Remove the dedicated systemd config
 ynh_remove_systemd_config
+ynh_remove_systemd_config --service="$app-promtail"
 
 #=================================================
 # REMOVE LOGROTATE CONFIGURATION
@@ -57,6 +59,17 @@ ynh_script_progression --message="Removing app main directory..." --weight=1
 
 # Remove the app directory securely
 ynh_secure_remove --file="$final_path"
+
+#=================================================
+# REMOVE CONFIGURATION
+#=================================================
+
+# Remove the data directory if --purge option is used
+if [ "${YNH_APP_PURGE:-0}" -eq 1 ]
+then
+	ynh_script_progression --message="Removing app data directory..." --weight=1
+	ynh_secure_remove --file="/etc/$app"
+fi
 
 #=================================================
 # REMOVE DEPENDENCIES

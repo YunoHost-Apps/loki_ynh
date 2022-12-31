@@ -1,5 +1,5 @@
 [Unit]
-Description=Loki daemon
+Description=Promtail daemon
 After=network.target
 
 [Service]
@@ -7,8 +7,8 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__/
-ExecStart=__FINALPATH__/loki-linux-__ARCH__ --config.file __FINALPATH__/local-config.yaml
-StandardOutput=append:/var/log/__APP__/__APP__.log
+ExecStart=/bin/bash -c '__FINALPATH__/promtail-linux-__ARCH__ --config.file <(/bin/bash __FINALPATH__/merge_yaml.sh /etc/__APP__/promtail-default.yaml /etc/__APP__/promtail.d/*.y{a,}ml)'
+StandardOutput=append:/var/log/__APP__/promtail.log
 StandardError=inherit
 
 # Sandboxing options to harden security

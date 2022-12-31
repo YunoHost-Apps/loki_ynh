@@ -1,0 +1,11 @@
+server:
+  http_listen_port: __PROMTAIL_PORT__
+
+clients:
+  - url: http://localhost:__HTTP_PORT__/loki/api/v1/push
+
+positions:
+  filename: /tmp/promtail_positions.yaml
+
+target_config:
+   sync_period: 10s
