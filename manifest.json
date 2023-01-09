@@ -14,7 +14,7 @@
         "admindoc": "https://grafana.com/docs/loki/latest/",
         "code": "https://github.com/grafana/loki"
     },
-    "license": "AGPL-3.0-or-later",
+    "license": "AGPL-3.0",
     "maintainer": {
         "name": "fflorent",
         "email": "florent.git@zeteo.me"
