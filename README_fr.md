@@ -31,7 +31,7 @@ A Loki-based logging stack consists of 3 components:
 
 
 
-**Version incluse :** 2.7.1~ynh2
+**Version incluse :** 2.7.1~ynh3
 ## Avertissements / informations importantes
 
  - Loki is not exposed to the web;
