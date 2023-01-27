@@ -5,15 +5,15 @@ It shall NOT be edited by hand.
 
 # Loki + Promtail pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/loki.svg)](https://dash.yunohost.org/appci/app/loki) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/loki.svg)](https://dash.yunohost.org/appci/app/loki) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
 [![Installer Loki + Promtail avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Loki + Promtail rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer Loki + Promtail rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system inspired by Prometheus. It is designed to be very cost effective and easy to operate. It does not index the contents of the logs, but rather a set of labels for each log stream.
 
@@ -31,7 +31,7 @@ A Loki-based logging stack consists of 3 components:
 
 
 
-**Version incluse :** 2.7.1~ynh3
+**Version incluse :** 2.7.2~ynh1
 ## Avertissements / informations importantes
 
  - Loki is not exposed to the web;
@@ -39,9 +39,9 @@ A Loki-based logging stack consists of 3 components:
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://grafana.com/docs/loki/latest/>
-* Documentation officielle de l'admin : <https://grafana.com/docs/loki/latest/>
-* Dépôt de code officiel de l'app : <https://github.com/grafana/loki>
+* Site officiel de l’app : <https://grafana.com/docs/loki/latest/>
+* Documentation officielle de l’admin : <https://grafana.com/docs/loki/latest/>
+* Dépôt de code officiel de l’app : <https://github.com/grafana/loki>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_loki>
 * Signaler un bug : <https://github.com/YunoHost-Apps/loki_ynh/issues>
 
@@ -57,4 +57,4 @@ ou
 sudo yunohost app upgrade loki -u https://github.com/YunoHost-Apps/loki_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
