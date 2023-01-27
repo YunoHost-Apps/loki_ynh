@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # Loki + Promtail for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/loki.svg)](https://dash.yunohost.org/appci/app/loki) ![Working status](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/loki.svg)](https://dash.yunohost.org/appci/app/loki) ![Working status](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
 [![Install Loki + Promtail with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -31,7 +31,7 @@ A Loki-based logging stack consists of 3 components:
 
 
 
-**Shipped version:** 2.7.1~ynh3
+**Shipped version:** 2.7.2~ynh1
 ## Disclaimers / important information
 
  - Loki is not exposed to the web;
