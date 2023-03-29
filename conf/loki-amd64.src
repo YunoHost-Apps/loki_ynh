@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/grafana/loki/releases/download/v2.7.4/loki-linux-amd64.zip
-SOURCE_SUM=0ddd14b0e4a5b55a5db4590ffcaf4c2758798559196cc462d43f0cd47122a2c5
+SOURCE_URL=https://github.com/grafana/loki/releases/download/v2.7.5/loki-linux-amd64.zip
+SOURCE_SUM=608d95820881161036be561caab5aff3984c03bddaa16f6129cf32732b6c4047
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=false
