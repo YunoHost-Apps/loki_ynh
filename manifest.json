@@ -6,7 +6,7 @@
         "en": "Grafana Loki is a set of components that can be composed into a fully featured logging stack.",
         "fr": "Grafana Loki est un ensemble de composants qui peuvent être composés pour former une pile de journalisation complète."
     },
-    "version": "2.7.5~ynh1",
+    "version": "2.8.0~ynh1",
     "url": "https://grafana.com/docs/loki/latest/",
     "upstream": {
         "license": "AGPL-3.0",
