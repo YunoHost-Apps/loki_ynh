@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/grafana/loki/releases/download/v2.8.0/promtail-linux-amd64.zip
-SOURCE_SUM=ff5b819e66706d2b7d5fc3ef425179e8364650093835e8819a90ad828b6d2043
+SOURCE_URL=https://github.com/grafana/loki/releases/download/v2.8.1/promtail-linux-amd64.zip
+SOURCE_SUM=135497258ede1dfdaf5837a1b0929b5a575f1193fb33eb11d1125100d5294698
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=false
