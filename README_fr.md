@@ -43,7 +43,7 @@ A Loki-based logging stack consists of 3 components:
 * Site officiel de l’app : <https://grafana.com/docs/loki/latest/>
 * Documentation officielle de l’admin : <https://grafana.com/docs/loki/latest/>
 * Dépôt de code officiel de l’app : <https://github.com/grafana/loki>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_loki>
+* YunoHost Store: <https://apps.yunohost.org/app/loki>
 * Signaler un bug : <https://github.com/YunoHost-Apps/loki_ynh/issues>
 
 ## Informations pour les développeurs
