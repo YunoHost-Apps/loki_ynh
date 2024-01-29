@@ -19,15 +19,11 @@ ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
-mkdir -p "/etc/$app/loki.d"
-chmod 700 "/etc/$app/loki.d"
-chown "$app:www-data" "/etc/$app/loki.d"
-
-mkdir -p "/etc/$app/promtail.d"
-chmod 700 "/etc/$app/promtail.d"
-chown "$app:www-data" "/etc/$app/promtail.d"
+mkdir -p "/etc/$app/loki.d" "/etc/$app/promtail.d"
+chmod 700 "/etc/$app"
+chown -R "$app:www-data" "/etc/$app"
 
 #=================================================
 # ADD A CONFIGURATION
