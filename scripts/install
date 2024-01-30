@@ -10,78 +10,24 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# MANAGE SCRIPT FAILURE
-#=================================================
-
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
-
-#=================================================
-# RETRIEVE ARGUMENTS FROM THE MANIFEST
-#=================================================
-
-app=$YNH_APP_INSTANCE_NAME
-arch=$YNH_ARCH
-
-#=================================================
-# CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
-#=================================================
-ynh_script_progression --message="Validating installation parameters..." --weight=1
-
-final_path=/opt/yunohost/$app
-test ! -e "$final_path" || ynh_die --message="This path already contains a folder"
-
-#=================================================
-# STANDARD MODIFICATIONS
-#=================================================
-# FIND AND OPEN A PORT
-#=================================================
-ynh_script_progression --message="Finding available ports..." --weight=1
-
-http_port=$(ynh_find_port --port=3100)
-ynh_app_setting_set --app=$app --key=http_port --value=$http_port
-
-grpc_port=$(ynh_find_port --port=9096)
-ynh_app_setting_set --app=$app --key=grpc_port --value=$grpc_port
-
-promtail_port=$(ynh_find_port --port=9080)
-ynh_app_setting_set --app=$app --key=promtail_port --value=$promtail_port
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=1
-
-ynh_install_app_dependencies $pkg_dependencies
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Configuring system user..." --weight=1
-
-# Create a system user
-ynh_system_user_create --username=$app --home_dir="$final_path"
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
-ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-ynh_setup_source --dest_dir="$final_path" --source_id="loki-$YNH_ARCH"
-ynh_setup_source --dest_dir="$final_path" --source_id="promtail-$YNH_ARCH"
+ynh_setup_source --dest_dir="$install_dir" --source_id="loki"
+ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:www-data "$final_path"
+# Rename the binaries to remove arch
+mv "$install_dir"/loki-linux-* "$install_dir"/loki
+mv "$install_dir"/promtail-linux-* "$install_dir"/promtail
 
-mkdir -p "/etc/$app/loki.d"
-chmod 700 "/etc/$app/loki.d"
-chown $app:www-data "/etc/$app/loki.d"
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
-mkdir -p "/etc/$app/promtail.d"
-chmod 700 "/etc/$app/promtail.d"
-chown $app:www-data "/etc/$app/promtail.d"
+mkdir -p "/etc/$app/loki.d" "/etc/$app/promtail.d"
+chmod 700 "/etc/$app"
+chown -R "$app:www-data" "/etc/$app"
 
 #=================================================
 # ADD A CONFIGURATION
@@ -94,7 +40,7 @@ ynh_add_config --template="loki-default.yaml" --destination="/etc/$app/loki-defa
 # You may need to use chmod 600 instead of 400,
 # for example if the app is expected to be able to modify its own config
 chmod 400 "/etc/$app/loki-default.yaml"
-chown $app:www-data "/etc/$app/loki-default.yaml"
+chown "$app:www-data" "/etc/$app/loki-default.yaml"
 
 ynh_add_config --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
 
@@ -102,33 +48,20 @@ ynh_add_config --template="promtail-default.yaml" --destination="/etc/$app/promt
 # You may need to use chmod 600 instead of 400,
 # for example if the app is expected to be able to modify its own config
 chmod 400 "/etc/$app/promtail-default.yaml"
-chown $app:www-data "/etc/$app/promtail-default.yaml"
+chown "$app:www-data" "/etc/$app/promtail-default.yaml"
 
 #=================================================
-# SETUP SYSTEMD
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=1
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
 
 ynh_add_systemd_config --template="loki.service"
 ynh_add_systemd_config --template="promtail.service" --service="$app-promtail"
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Configuring log rotation..." --weight=1
+yunohost service add "$app" --description="Loki daemon" --log="/var/log/$app/loki.log"
+yunohost service add "$app-promtail" --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
-
-yunohost service add $app --description="Loki daemon" --log="/var/log/$app/loki.log"
-yunohost service add $app-promtail --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -136,8 +69,8 @@ yunohost service add $app-promtail --description="Promtail daemon" --log="/var/l
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/loki.log"
-ynh_systemd_action --service_name=$app-promtail --action="start" --log_path="/var/log/$app/promtail.log"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/loki.log"
+ynh_systemd_action --service_name="$app-promtail" --action="start" --log_path="/var/log/$app/promtail.log"
 
 #=================================================
 # END OF SCRIPT

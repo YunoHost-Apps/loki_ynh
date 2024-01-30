@@ -1,8 +1,8 @@
 server:
-  http_listen_port: __PROMTAIL_PORT__
+  http_listen_port: __PORT_PROMTAIL__
 
 clients:
-  - url: http://localhost:__HTTP_PORT__/loki/api/v1/push
+  - url: http://localhost:__PORT_HTTP__/loki/api/v1/push
 
 positions:
   filename: /tmp/promtail_positions.yaml

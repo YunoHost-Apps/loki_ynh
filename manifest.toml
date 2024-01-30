@@ -1,0 +1,61 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "loki"
+name = "Loki + Promtail"
+description.en = "Grafana Loki is a set of components that can be composed into a fully featured logging stack."
+description.fr = "Grafana Loki est un ensemble de composants qui peuvent être composés pour former une pile de journalisation complète."
+
+version = "2.8.4~ynh1"
+
+maintainers = ["fflorent"]
+
+[upstream]
+license = "AGPL-3.0"
+website = "https://grafana.com/docs/loki/latest/"
+admindoc = "https://grafana.com/docs/loki/latest/"
+code = "https://github.com/grafana/loki"
+cpe = "cpe:2.3:a:grafana:loki"
+
+[integration]
+yunohost = ">= 11.0.0"
+architectures = ["amd64", "arm64"]
+multi_instance = true
+ldap = "not_relevant"
+sso = "not_relevant"
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+
+[resources]
+    [resources.sources]
+    [resources.sources.loki]
+    amd64.url = "https://github.com/grafana/loki/releases/download/v2.8.4/loki-linux-amd64.zip"
+    amd64.sha256 = "26a49c76219810566221ab7d5880ddb0ccba1ffeee4768c5ae919c4e36094d8a"
+
+    arm64.url = "https://github.com/grafana/loki/releases/download/v2.8.4/loki-linux-arm64.zip"
+    arm64.sha256 = "ce856173e609dd39df845e05c2a17fe9061175072e76b9f8a7c6a28a33e023c3"
+
+    in_subdir = false
+
+    [resources.sources.promtail]
+    amd64.url = "https://github.com/grafana/loki/releases/download/v2.8.4/promtail-linux-amd64.zip"
+    amd64.sha256 = "05799bd94b5550b12ec975b6d4f82cd93cb50f79d13ab8e8fd9573aef8455372"
+
+    arm64.url = "https://github.com/grafana/loki/releases/download/v2.8.4/promtail-linux-arm64.zip"
+    arm64.sha256 = "959069f64d21e42f840a2942e3b6351d0029a9c0448dcc79dd54b1a5fe5e40a2"
+    in_subdir = false
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+
+    [resources.ports]
+    http.default = 3100
+    grpc.default = 9096
+    promtail.default = 9080

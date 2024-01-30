@@ -1,8 +1,8 @@
 auth_enabled: false
 
 server:
-  http_listen_port: __HTTP_PORT__
-  grpc_listen_port: __GRPC_PORT__
+  http_listen_port: __PORT_HTTP__
+  grpc_listen_port: __PORT_GRPC__
 
 common:
   path_prefix: /tmp/loki
