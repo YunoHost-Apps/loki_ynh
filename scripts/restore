@@ -37,8 +37,8 @@ ynh_restore_file --origin_path="/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
 yunohost service add "$app" --description="Loki daemon" --log="/var/log/$app/loki.log"
 
-systemctl enable "$app-promtail.service" --quiet
 ynh_restore_file --origin_path="/etc/systemd/system/$app-promtail.service"
+systemctl enable "$app-promtail.service" --quiet
 yunohost service add "$app-promtail" --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
 ynh_restore_file --origin_path="/etc/logrotate.d/$app"
