@@ -31,7 +31,7 @@ A Loki-based logging stack consists of 3 components:
 - [Grafana](https://github.com/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
 
 
-**Shipped version:** 2.8.4~ynh2
+**Shipped version:** 2.8.4~ynh3
 ## Documentation and resources
 
 * Official app website: <https://grafana.com/docs/loki/latest/>
