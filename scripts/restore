@@ -48,8 +48,8 @@ ynh_restore_file --origin_path="/etc/logrotate.d/$app"
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/loki.log"
-ynh_systemd_action --service_name="$app-promtail" --action="start" --log_path="/var/log/$app/promtail.log"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/loki.log" --line_match="Loki started"
+ynh_systemd_action --service_name="$app-promtail" --action="start" --log_path="/var/log/$app/promtail.log" --line_match="server listening on addresses"
 
 #=================================================
 # END OF SCRIPT
