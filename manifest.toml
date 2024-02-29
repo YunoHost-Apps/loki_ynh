@@ -33,10 +33,10 @@ ram.runtime = "50M"
 [resources]
     [resources.sources]
     [resources.sources.loki]
-    amd64.url = "https://github.com/grafana/loki/releases/download/v2.9.4/loki-linux-amd64.zip"
-    amd64.sha256 = "6da1fcb0a64004373c47517f9e072637fb6b697790d8f295d0b423f3dd5d334b"
-    arm64.url = "https://github.com/grafana/loki/releases/download/v2.9.4/loki-linux-arm64.zip"
-    arm64.sha256 = "92d1ea859044a9fc8d5916cb36a464545fec7bd70a7471c65cd21cc0f1834493"
+    amd64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/loki-linux-amd64.zip"
+    amd64.sha256 = "9d919a55e7a2dbaeab46e777a0589d7e304c71fed011f989143883cbc887e348"
+    arm64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/loki-linux-arm64.zip"
+    arm64.sha256 = "491833bf201c55388b82c3d1f583a9d4426c1b778ed3dc710cd67c8cbbbb67bb"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
@@ -44,10 +44,10 @@ ram.runtime = "50M"
     autoupdate.asset.arm64 = "loki-linux-arm64"
 
     [resources.sources.promtail]
-    amd64.url = "https://github.com/grafana/loki/releases/download/v2.9.4/promtail-linux-amd64.zip"
-    amd64.sha256 = "ff40a0717b9901ad42f4fea3c1ab307efc9d267266d7abbbcbabce2144e4e0f4"
-    arm64.url = "https://github.com/grafana/loki/releases/download/v2.9.4/promtail-linux-arm64.zip"
-    arm64.sha256 = "1e7ae650d522c1a897fe38a82708fbeb7d4eaad9873ec641b0ce421595865010"
+    amd64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/promtail-linux-amd64.zip"
+    amd64.sha256 = "e444bcff2d6677d284350819d3d1b7b473a1699357689230254fbc602b28dac7"
+    arm64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/promtail-linux-arm64.zip"
+    arm64.sha256 = "b23bd750dc5f6a76d808826ebc9d3c8b3540adb329578b650571a10d2be348b8"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
