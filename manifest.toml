@@ -7,7 +7,7 @@ name = "Loki + Promtail"
 description.en = "Grafana Loki is a set of components that can be composed into a fully featured logging stack."
 description.fr = "Grafana Loki est un ensemble de composants qui peuvent être composés pour former une pile de journalisation complète."
 
-version = "2.8.4~ynh3"
+version = "2.9.5~ynh1"
 
 maintainers = ["fflorent"]
 
@@ -20,7 +20,7 @@ cpe = "cpe:2.3:a:grafana:loki"
 
 [integration]
 yunohost = ">= 11.0.0"
-architectures = ["amd64", "arm64"]
+architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
 ldap = "not_relevant"
 sso = "not_relevant"
@@ -35,24 +35,30 @@ ram.runtime = "50M"
     [resources.sources.loki]
     amd64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/loki-linux-amd64.zip"
     amd64.sha256 = "9d919a55e7a2dbaeab46e777a0589d7e304c71fed011f989143883cbc887e348"
+    armhf.url = "https://github.com/grafana/loki/releases/download/v2.9.5/loki-linux-arm.zip"
+    armhf.sha256 = "104efc28b322523bf5bced67bdcc3746e1f7f872057f6ef54f25ab00ce426b39"
     arm64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/loki-linux-arm64.zip"
     arm64.sha256 = "491833bf201c55388b82c3d1f583a9d4426c1b778ed3dc710cd67c8cbbbb67bb"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
-    autoupdate.asset.amd64 = "loki-linux-amd64"
-    autoupdate.asset.arm64 = "loki-linux-arm64"
+    autoupdate.asset.amd64 = "^loki-linux-amd64.zip$"
+    autoupdate.asset.amd64 = "^loki-linux-arm.zip$"
+    autoupdate.asset.arm64 = "^loki-linux-arm64.zip$"
 
     [resources.sources.promtail]
     amd64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/promtail-linux-amd64.zip"
     amd64.sha256 = "e444bcff2d6677d284350819d3d1b7b473a1699357689230254fbc602b28dac7"
+    armhf.url = "https://github.com/grafana/loki/releases/download/v2.9.5/promtail-linux-arm.zip"
+    armhf.sha256 = "d0cc7552b8ce69534893040e6518288a6899c4f3acf9d4e7d32335f5f2f6145d"
     arm64.url = "https://github.com/grafana/loki/releases/download/v2.9.5/promtail-linux-arm64.zip"
     arm64.sha256 = "b23bd750dc5f6a76d808826ebc9d3c8b3540adb329578b650571a10d2be348b8"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
-    autoupdate.asset.amd64 = "promtail-linux-amd64"
-    autoupdate.asset.arm64 = "promtail-linux-arm64"
+    autoupdate.asset.amd64 = "^promtail-linux-amd64.zip$"
+    autoupdate.asset.amd64 = "^promtail-linux-arm.zip$"
+    autoupdate.asset.arm64 = "^promtail-linux-arm64.zip$"
 
     [resources.system_user]
 
