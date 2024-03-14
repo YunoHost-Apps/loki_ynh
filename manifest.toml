@@ -43,7 +43,7 @@ ram.runtime = "50M"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "^loki-linux-amd64.zip$"
-    autoupdate.asset.amd64 = "^loki-linux-arm.zip$"
+    autoupdate.asset.armhf = "^loki-linux-arm.zip$"
     autoupdate.asset.arm64 = "^loki-linux-arm64.zip$"
 
     [resources.sources.promtail]
@@ -57,7 +57,7 @@ ram.runtime = "50M"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "^promtail-linux-amd64.zip$"
-    autoupdate.asset.amd64 = "^promtail-linux-arm.zip$"
+    autoupdate.asset.armhf = "^promtail-linux-arm.zip$"
     autoupdate.asset.arm64 = "^promtail-linux-arm64.zip$"
 
     [resources.system_user]
