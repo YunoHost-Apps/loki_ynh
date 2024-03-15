@@ -30,15 +30,14 @@ A Loki-based logging stack consists of 3 components:
 - Loki is the main server, responsible for storing logs and processing queries.
 - [Grafana](https://github.com/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
 
-
-**Version incluse :** 2.8.4~ynh3
+**Version incluse :** 2.9.5~ynh1
 ## Documentations et ressources
 
-* Site officiel de l’app : <https://grafana.com/docs/loki/latest/>
-* Documentation officielle de l’admin : <https://grafana.com/docs/loki/latest/>
-* Dépôt de code officiel de l’app : <https://github.com/grafana/loki>
-* YunoHost Store: <https://apps.yunohost.org/app/loki>
-* Signaler un bug : <https://github.com/YunoHost-Apps/loki_ynh/issues>
+- Site officiel de l’app : <https://grafana.com/docs/loki/latest/>
+- Documentation officielle de l’admin : <https://grafana.com/docs/loki/latest/>
+- Dépôt de code officiel de l’app : <https://github.com/grafana/loki>
+- YunoHost Store : <https://apps.yunohost.org/app/loki>
+- Signaler un bug : <https://github.com/YunoHost-Apps/loki_ynh/issues>
 
 ## Informations pour les développeurs
 
@@ -46,7 +45,7 @@ Merci de faire vos pull request sur la [branche testing](https://github.com/Yuno
 
 Pour essayer la branche testing, procédez comme suit.
 
-``` bash
+```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/loki_ynh/tree/testing --debug
 ou
 sudo yunohost app upgrade loki -u https://github.com/YunoHost-Apps/loki_ynh/tree/testing --debug
