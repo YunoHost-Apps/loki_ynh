@@ -7,7 +7,7 @@ name = "Loki + Promtail"
 description.en = "Grafana Loki is a set of components that can be composed into a fully featured logging stack."
 description.fr = "Grafana Loki est un ensemble de composants qui peuvent être composés pour former une pile de journalisation complète."
 
-version = "2.9.5~ynh1"
+version = "3.0.0~ynh1"
 
 maintainers = ["fflorent"]
 
@@ -19,11 +19,14 @@ code = "https://github.com/grafana/loki"
 cpe = "cpe:2.3:a:grafana:loki"
 
 [integration]
-yunohost = ">= 11.0.0"
+yunohost = ">= 11.2"
 architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
+
 ldap = "not_relevant"
+
 sso = "not_relevant"
+
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
