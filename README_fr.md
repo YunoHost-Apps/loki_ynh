@@ -32,6 +32,7 @@ A Loki-based logging stack consists of 3 components:
 
 
 **Version incluse :** 3.0.0~ynh1
+
 ## Documentations et ressources
 
 - Site officiel de l’app : <https://grafana.com/docs/loki/latest/>
