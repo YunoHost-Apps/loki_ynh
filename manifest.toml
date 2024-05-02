@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "loki"
 name = "Loki + Promtail"
-description.en = "Grafana Loki is a set of components that can be composed into a fully featured logging stack."
-description.fr = "Grafana Loki est un ensemble de composants qui peuvent être composés pour former une pile de journalisation complète."
+description.en = "Set of components that can be composed into a fully featured logging stack"
+description.fr = "Ensemble de composants qui peuvent être composés pour former une pile de journalisation complète"
 
 version = "3.0.0~ynh1"
 
