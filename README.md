@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install Loki + Promtail with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install Loki + Promtail quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -31,7 +31,7 @@ A Loki-based logging stack consists of 3 components:
 - [Grafana](https://github.com/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
 
 
-**Shipped version:** 2.9.5~ynh1
+**Shipped version:** 3.0.0~ynh1
 ## Documentation and resources
 
 - Official app website: <https://grafana.com/docs/loki/latest/>
