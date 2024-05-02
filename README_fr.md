@@ -11,8 +11,8 @@ Il ne doit pas être modifié à la main.
 
 *[Lire le README dans d'autres langues.](./ALL_README.md)*
 
-> *Ce package vous permet d’installer Loki + Promtail rapidement et simplement sur un serveur YunoHost.
-Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
+> *Ce package vous permet d’installer Loki + Promtail rapidement et simplement sur un serveur YunoHost.*  
+> *Si vous n’avez pas YunoHost, consultez [ce guide](https://yunohost.org/install) pour savoir comment l’installer et en profiter.*
 
 ## Vue d'ensemble
 
@@ -43,8 +43,7 @@ A Loki-based logging stack consists of 3 components:
 
 Merci de faire vos pull request sur la [branche branch](https://github.com/YunoHost-Apps/loki_ynh/tree/testing),
 
-
-Pour essayer la branche testing, procédez comme suit.
+Pour essayer la branche `testing`, procédez comme suit :
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/loki_ynh/tree/testing --debug

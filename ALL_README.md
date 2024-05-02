@@ -4,5 +4,3 @@
 
 
 * [Lire le README en français](README_fr.md)
-
-
