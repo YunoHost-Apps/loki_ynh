@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 Loki + Promtail
+# YunoHost 上的 Loki + Promtail
 
 [![集成程度](https://dash.yunohost.org/integration/loki.svg)](https://dash.yunohost.org/appci/app/loki) ![工作状态](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
 
