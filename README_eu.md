@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Loki + Promtail YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/loki.svg)](https://dash.yunohost.org/appci/app/loki) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/loki.svg)](https://ci-apps.yunohost.org/ci/apps/loki/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
 
 [![Instalatu Loki + Promtail YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 

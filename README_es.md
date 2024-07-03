@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # Loki + Promtail para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/loki.svg)](https://dash.yunohost.org/appci/app/loki) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/loki.svg)](https://ci-apps.yunohost.org/ci/apps/loki/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
 
 [![Instalar Loki + Promtail con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 
