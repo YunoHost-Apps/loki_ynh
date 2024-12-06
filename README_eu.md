@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Loki + Promtail YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/loki.svg)](https://ci-apps.yunohost.org/ci/apps/loki/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/loki)](https://ci-apps.yunohost.org/ci/apps/loki/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/loki)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/loki)
 
 [![Instalatu Loki + Promtail YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 
@@ -31,7 +33,7 @@ A Loki-based logging stack consists of 3 components:
 - [Grafana](https://github.com/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
 
 
-**Paketatutako bertsioa:** 3.0.0~ynh5
+**Paketatutako bertsioa:** 3.0.0~ynh6
 ## Dokumentazioa eta baliabideak
 
 - Aplikazioaren webgune ofiziala: <https://grafana.com/docs/loki/latest/>
