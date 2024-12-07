@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Loki + Promtail untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/loki.svg)](https://ci-apps.yunohost.org/ci/apps/loki/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/loki)](https://ci-apps.yunohost.org/ci/apps/loki/)
+![Status kerja](https://apps.yunohost.org/badge/state/loki)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/loki)
 
 [![Pasang Loki + Promtail dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 
@@ -31,7 +33,7 @@ A Loki-based logging stack consists of 3 components:
 - [Grafana](https://github.com/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
 
 
-**Versi terkirim:** 3.0.0~ynh5
+**Versi terkirim:** 3.0.0~ynh6
 ## Dokumentasi dan sumber daya
 
 - Website aplikasi resmi: <https://grafana.com/docs/loki/latest/>
