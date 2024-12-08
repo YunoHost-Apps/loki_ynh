@@ -5,7 +5,9 @@
 
 # YunoHost 上的 Loki + Promtail
 
-[![集成程度](https://dash.yunohost.org/integration/loki.svg)](https://ci-apps.yunohost.org/ci/apps/loki/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/loki.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/loki.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/loki)](https://ci-apps.yunohost.org/ci/apps/loki/)
+![工作状态](https://apps.yunohost.org/badge/state/loki)
+![维护状态](https://apps.yunohost.org/badge/maintained/loki)
 
 [![使用 YunoHost 安装 Loki + Promtail](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=loki)
 
@@ -31,7 +33,7 @@ A Loki-based logging stack consists of 3 components:
 - [Grafana](https://github.com/Yunohost-Apps/grafana_ynh) for querying and displaying the logs.
 
 
-**分发版本：** 3.0.0~ynh5
+**分发版本：** 3.0.0~ynh6
 ## 文档与资源
 
 - 官方应用网站： <https://grafana.com/docs/loki/latest/>
