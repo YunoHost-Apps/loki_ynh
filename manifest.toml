@@ -7,7 +7,7 @@ name = "Loki + Promtail"
 description.en = "Set of components that can be composed into a fully featured logging stack"
 description.fr = "Ensemble de composants qui peuvent être composés pour former une pile de journalisation complète"
 
-version = "3.0.0~ynh10"
+version = "3.4.3~ynh1"
 
 maintainers = ["fflorent"]
 
@@ -35,7 +35,7 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources]
-    [resources.sources.loki]
+    [resources.sources.main]
     amd64.url = "https://github.com/grafana/loki/releases/download/v3.4.3/loki-linux-amd64.zip"
     amd64.sha256 = "e5f42bbdc07ac1e37732264b97f4fa20877e7c18371dc260b1cda34ab1c3ae19"
     armhf.url = "https://github.com/grafana/loki/releases/download/v3.4.3/loki-linux-arm.zip"

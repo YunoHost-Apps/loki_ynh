@@ -14,7 +14,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
-ynh_setup_source --dest_dir="$install_dir" --source_id="loki"
+ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
 # Rename the binaries to remove arch
