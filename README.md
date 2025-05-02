@@ -4,14 +4,14 @@ It shall NOT be edited by hand.
 -->
 
 <h1>
-  <img src="https://raw.githubusercontent.com/YunoHost/apps/master/logos/loki.png" width="32px" alt="Logo of Loki + Promtail">
+  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/loki.png" width="32px" alt="Logo of Loki + Promtail">
   Loki + Promtail, packaged for YunoHost
 </h1>
 
 Set of components that can be composed into a fully featured logging stack
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://grafana.com/docs/loki/latest/)
-![Version: 3.0.0~ynh9](https://img.shields.io/badge/Version-3.0.0~ynh9-rgba(0,150,0,1)?style=for-the-badge)
+[![Version: 3.5.0~ynh1](https://img.shields.io/badge/Version-3.5.0~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/loki/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/loki"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
@@ -19,6 +19,8 @@ Set of components that can be composed into a fully featured logging stack
 </div>
 
 ## 📦 Developer info
+
+[![Automatic tests level](https://apps.yunohost.org/badge/cilevel/loki)](https://ci-apps.yunohost.org/ci/apps/loki/)
 
 🛠️ Upstream Loki + Promtail repository: <https://github.com/grafana/loki>
 
