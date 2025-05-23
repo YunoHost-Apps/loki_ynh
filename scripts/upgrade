@@ -22,9 +22,6 @@ ynh_setup_source --dest_dir="$install_dir" --source_id="loki" --full_replace
 
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
-mv "$install_dir"/loki-linux-* "$install_dir"/loki
-mv "$install_dir"/promtail-linux-* "$install_dir"/promtail
-
 mkdir -p "/etc/$app/loki.d" "/etc/$app/promtail.d"
 
 chmod 700 "/etc/$app"
@@ -44,8 +41,10 @@ ynh_config_add --template="promtail-default.yaml" --destination="/etc/$app/promt
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
+# Create a dedicated systemd config
 ynh_config_add_systemd --template="loki.service"
 ynh_config_add_systemd --template="promtail.service" --service="$app-promtail"
+
 yunohost service add "$app" --description="Loki daemon" --log="/var/log/$app/loki.log"
 yunohost service add "$app-promtail" --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 

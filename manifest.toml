@@ -43,6 +43,7 @@ ram.runtime = "50M"
     arm64.url = "https://github.com/grafana/loki/releases/download/v3.5.1/loki-linux-arm64.zip"
     arm64.sha256 = "aa923a91c47312f467b26538d9e777bab26e267899b3b9009cd8acfd797f8fcb"
     in_subdir = false
+    rename = "loki"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "^loki-linux-amd64.zip$"
@@ -57,6 +58,7 @@ ram.runtime = "50M"
     arm64.url = "https://github.com/grafana/loki/releases/download/v3.5.1/promtail-linux-arm64.zip"
     arm64.sha256 = "25546b5c5c8ac88059eb615027eb1ce8df269eaeadc6593f2ca4d8f6cd0ce361"
     in_subdir = false
+    rename = "promtail"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "^promtail-linux-amd64.zip$"
