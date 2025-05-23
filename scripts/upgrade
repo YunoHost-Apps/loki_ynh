@@ -17,7 +17,9 @@ ynh_systemctl --service="$app-promtail" --action="stop" --log_path="/var/log/$ap
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
+# Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --source_id="loki" --full_replace
+
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
 mv "$install_dir"/loki-linux-* "$install_dir"/loki
