@@ -28,10 +28,6 @@ ynh_script_progression --message="Upgrading source files..." --weight=1
 ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace=1
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
-# Rename the binaries to remove arch
-mv "$install_dir"/loki-linux-* "$install_dir"/loki
-mv "$install_dir"/promtail-linux-* "$install_dir"/promtail
-
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
@@ -69,6 +65,7 @@ ynh_script_progression --message="Upgrading system configurations related to $ap
 # Create a dedicated systemd config
 ynh_add_systemd_config --template="loki.service"
 ynh_add_systemd_config --template="promtail.service" --service="$app-promtail"
+
 yunohost service add "$app" --description="Loki daemon" --log="/var/log/$app/loki.log"
 yunohost service add "$app-promtail" --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
