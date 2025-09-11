@@ -7,7 +7,7 @@ name = "Loki + Promtail"
 description.en = "Set of components that can be composed into a fully featured logging stack"
 description.fr = "Ensemble de composants qui peuvent être composés pour former une pile de journalisation complète"
 
-version = "3.5.4~ynh1"
+version = "3.5.5~ynh1"
 
 maintainers = ["fflorent"]
 
@@ -36,12 +36,12 @@ ram.runtime = "50M"
 [resources]
     [resources.sources]
     [resources.sources.main]
-    amd64.url = "https://github.com/grafana/loki/releases/download/v3.5.4/loki-linux-amd64.zip"
-    amd64.sha256 = "333bf00b5833e6b1faf4506c0e4840188dde41cbeab608b88c5b7d1227303ffc"
-    armhf.url = "https://github.com/grafana/loki/releases/download/v3.5.4/loki-linux-arm.zip"
-    armhf.sha256 = "e4876f8d4bc48570c1736e8bd00309b6606275420b11249dc6cb18688a355474"
-    arm64.url = "https://github.com/grafana/loki/releases/download/v3.5.4/loki-linux-arm64.zip"
-    arm64.sha256 = "5e4cc060b4600f679a726b4afd63ce0f4b999dbf0d87d2e99f6991102d774934"
+    amd64.url = "https://github.com/grafana/loki/releases/download/v3.5.5/loki-linux-amd64.zip"
+    amd64.sha256 = "eefea8fd3701f2aae77ee7130be10973d51a33d9fa942075b8cefbf7f930868b"
+    armhf.url = "https://github.com/grafana/loki/releases/download/v3.5.5/loki-linux-arm.zip"
+    armhf.sha256 = "1a968392e114de72a26c296602132be146299e4df0e0939bf3a85dffcc56becd"
+    arm64.url = "https://github.com/grafana/loki/releases/download/v3.5.5/loki-linux-arm64.zip"
+    arm64.sha256 = "b379491c89d5189c76c74a827afb5ed817174db7f19bd9620d889e417a1f7291"
     in_subdir = false
     rename = "loki"
 
@@ -51,12 +51,12 @@ ram.runtime = "50M"
     autoupdate.asset.arm64 = "^loki-linux-arm64.zip$"
 
     [resources.sources.promtail]
-    amd64.url = "https://github.com/grafana/loki/releases/download/v3.5.4/promtail-linux-amd64.zip"
-    amd64.sha256 = "35e188bbad06c08445915f46c35f245407e78ddb1c4c633dd5be87294cc3aee4"
-    armhf.url = "https://github.com/grafana/loki/releases/download/v3.5.4/promtail-linux-arm.zip"
-    armhf.sha256 = "25e626422121894aab061fa774081c6343c9f6b52f4ffd1aec587a21b1815415"
-    arm64.url = "https://github.com/grafana/loki/releases/download/v3.5.4/promtail-linux-arm64.zip"
-    arm64.sha256 = "b76f028a9d881a7876780dcb510da29a5138b56ff620dd193ba978af5ee5635b"
+    amd64.url = "https://github.com/grafana/loki/releases/download/v3.5.5/promtail-linux-amd64.zip"
+    amd64.sha256 = "7f3f263900105d2571e78bdbfb75694d76698b31c2cc48ad84426bb88a761993"
+    armhf.url = "https://github.com/grafana/loki/releases/download/v3.5.5/promtail-linux-arm.zip"
+    armhf.sha256 = "7a86afac5b08274e6d4da5812b1a91f49ebfb236e1a0c3ec1094a91910d5b4cb"
+    arm64.url = "https://github.com/grafana/loki/releases/download/v3.5.5/promtail-linux-arm64.zip"
+    arm64.sha256 = "118648cb5da1ef061c28b3e41e173b8c1fdb95b7163744a5fcdfc8d96058ce48"
     in_subdir = false
     rename = "promtail"
 
