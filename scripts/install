@@ -27,6 +27,8 @@ ynh_config_add --template="loki-default.yaml" --destination="/etc/$app/loki-defa
 
 ynh_config_add --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
 
+ynh_config_add --template="merge_yaml.sh" --destination="$install_dir/merge_yaml.sh"
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
