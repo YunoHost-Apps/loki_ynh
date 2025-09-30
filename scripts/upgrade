@@ -8,7 +8,6 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Stopping $app's systemd service..."
 
 ynh_systemctl --service="$app" --action="stop"
-
 ynh_systemctl --service="$app-promtail" --action="stop" --log_path="/var/log/$app/promtail.log"
 
 #=================================================
@@ -18,8 +17,15 @@ ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --source_id="loki" --full_replace
-
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
+
+# Rename the binaries to remove arch
+mv "$install_dir"/loki-linux-* "$install_dir"/loki
+mv "$install_dir"/promtail-linux-* "$install_dir"/promtail
+
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
 mkdir -p "/etc/$app/loki.d" "/etc/$app/promtail.d"
 
