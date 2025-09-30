@@ -24,9 +24,12 @@ ynh_systemd_action --service_name="$app-promtail" --action="stop" --log_path="/v
 #=================================================
 ynh_script_progression --message="Upgrading source files..." --weight=1
 
-# Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace=1
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
+
+# Rename the binaries to remove arch
+mv "$install_dir"/loki-linux-* "$install_dir"/loki
+mv "$install_dir"/promtail-linux-* "$install_dir"/promtail
 
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
@@ -43,17 +46,11 @@ ynh_script_progression --message="Updating a configuration file..." --weight=1
 
 ynh_add_config --template="loki-default.yaml" --destination="/etc/$app/loki-default.yaml"
 
-# FIXME: this should be handled by the core in the future
-# You may need to use chmod 600 instead of 400,
-# for example if the app is expected to be able to modify its own config
 chmod 400 "/etc/$app/loki-default.yaml"
 chown "$app:www-data" "/etc/$app/loki-default.yaml"
 
 ynh_add_config --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
 
-# FIXME: this should be handled by the core in the future
-# You may need to use chmod 600 instead of 400,
-# for example if the app is expected to be able to modify its own config
 chmod 400 "/etc/$app/promtail-default.yaml"
 chown "$app:www-data" "/etc/$app/promtail-default.yaml"
 
