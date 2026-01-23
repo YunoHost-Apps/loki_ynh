@@ -16,6 +16,9 @@ ynh_script_progression "Restoring the configuration files..."
 
 ynh_restore "/etc/$app"
 
+chmod 400 "/etc/$app/loki-default.yaml"
+chown "$app:www-data" "/etc/$app/loki-default.yaml"
+
 #=================================================
 # RESTORE SYSTEMD
 #=================================================
