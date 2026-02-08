@@ -1,73 +1,57 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-
 source /usr/share/yunohost/helpers
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
-# Rename the binaries to remove arch
 mv "$install_dir"/loki-linux-* "$install_dir"/loki
 mv "$install_dir"/promtail-linux-* "$install_dir"/promtail
 
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
-
 mkdir -p "/etc/$app/loki.d" "/etc/$app/promtail.d"
+
 chmod 700 "/etc/$app"
 chown -R "$app:www-data" "/etc/$app"
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..." --weight=1
+ynh_script_progression "Adding $app's configuration..."
 
-ynh_add_config --template="loki-default.yaml" --destination="/etc/$app/loki-default.yaml"
+ynh_config_add --template="loki-default.yaml" --destination="/etc/$app/loki-default.yaml"
 
-chmod 400 "/etc/$app/loki-default.yaml"
-chown "$app:www-data" "/etc/$app/loki-default.yaml"
+ynh_config_add --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
 
-ynh_add_config --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
-
-chmod 400 "/etc/$app/promtail-default.yaml"
-chown "$app:www-data" "/etc/$app/promtail-default.yaml"
+ynh_config_add --template="merge_yaml.sh" --destination="$install_dir/merge_yaml.sh"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_systemd_config --template="loki.service"
-ynh_add_systemd_config --template="promtail.service" --service="$app-promtail"
+ynh_config_add_systemd --template="loki.service"
 yunohost service add "$app" --description="Loki daemon" --log="/var/log/$app/loki.log"
+
+ynh_config_add_systemd --template="promtail.service" --service="$app-promtail"
 yunohost service add "$app-promtail" --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
-# Use logrotate to manage application logfile(s)
-ynh_use_logrotate
+ynh_config_add_logrotate
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
-ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/loki.log" --line_match="Loki started"
-ynh_systemd_action --service_name="$app-promtail" --action="start" --log_path="/var/log/$app/promtail.log" --line_match="server listening on addresses"
+ynh_systemctl --service="$app" --action="start" --log_path="/var/log/$app/loki.log" --wait_until="Loki started"
+ynh_systemctl --service="$app-promtail" --action="start" --log_path="/var/log/$app/promtail.log" --wait_until="server listening on addresses"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"

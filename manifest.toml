@@ -19,12 +19,12 @@ code = "https://github.com/grafana/loki"
 cpe = "cpe:2.3:a:grafana:loki"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 12.1.17"
+helpers_version = "2.1"
 architectures = ["amd64", "armhf", "arm64"]
 multi_instance = true
 
 ldap = "not_relevant"
-
 sso = "not_relevant"
 
 disk = "50M"
