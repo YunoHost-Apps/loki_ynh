@@ -1,30 +1,22 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD UPGRADE STEPS
-#=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Stopping a systemd service..." --weight=1
+ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemd_action --service_name="$app" --action="stop" --log_path="/var/log/$app/$app.log"
-ynh_systemd_action --service_name="$app-promtail" --action="stop" --log_path="/var/log/$app/promtail.log"
+ynh_systemctl --service="$app" --action="stop"
+ynh_systemctl --service="$app-promtail" --action="stop" --log_path="/var/log/$app/promtail.log"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Upgrading source files..." --weight=1
+ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace=1
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$install_dir" --source_id="loki" --full_replace
 ynh_setup_source --dest_dir="$install_dir" --source_id="promtail"
 
 # Rename the binaries to remove arch
@@ -36,49 +28,45 @@ chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
 mkdir -p "/etc/$app/loki.d" "/etc/$app/promtail.d"
+
 chmod 700 "/etc/$app"
 chown -R "$app:www-data" "/etc/$app"
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Updating a configuration file..." --weight=1
+ynh_script_progression "Updating configuration..."
 
-ynh_add_config --template="loki-default.yaml" --destination="/etc/$app/loki-default.yaml"
+ynh_config_add --template="loki-default.yaml" --destination="/etc/$app/loki-default.yaml"
 
-chmod 400 "/etc/$app/loki-default.yaml"
-chown "$app:www-data" "/etc/$app/loki-default.yaml"
+ynh_config_add --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
 
-ynh_add_config --template="promtail-default.yaml" --destination="/etc/$app/promtail-default.yaml"
-
-chmod 400 "/etc/$app/promtail-default.yaml"
-chown "$app:www-data" "/etc/$app/promtail-default.yaml"
+ynh_config_add --template="merge_yaml.sh" --destination="$install_dir/merge_yaml.sh"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 # Create a dedicated systemd config
-ynh_add_systemd_config --template="loki.service"
-ynh_add_systemd_config --template="promtail.service" --service="$app-promtail"
+ynh_config_add_systemd --template="loki.service"
+ynh_config_add_systemd --template="promtail.service" --service="$app-promtail"
 
 yunohost service add "$app" --description="Loki daemon" --log="/var/log/$app/loki.log"
 yunohost service add "$app-promtail" --description="Promtail daemon" --log="/var/log/$app/promtail.log"
 
-# Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
+ynh_config_add_logrotate
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/loki.log" --line_match="Loki started"
-ynh_systemd_action --service_name="$app-promtail" --action="start" --log_path="/var/log/$app/promtail.log" --line_match="server listening on addresses"
+ynh_systemctl --service="$app" --action="start" --log_path="/var/log/$app/loki.log" --wait_until="Loki started"
+ynh_systemctl --service="$app-promtail" --action="start" --log_path="/var/log/$app/promtail.log" --wait_until="server listening on addresses"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
